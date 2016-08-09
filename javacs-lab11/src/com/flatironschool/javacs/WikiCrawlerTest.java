@@ -39,7 +39,7 @@ public class WikiCrawlerTest {
 
 		// for testing purposes, load up the queue
 		WikiFetcher wf = new WikiFetcher();
-		Elements paragraphs = wf.readWikipedia(source);
+		Elements paragraphs = wf.fetchWikipedia(source);
 		wc.queueInternalLinks(paragraphs);
 	}
 
@@ -63,15 +63,15 @@ public class WikiCrawlerTest {
 
 		String res = wc.crawl(true);
 		assertThat(url1.equals(res), is(true));
-		assertThat(wc.queueSize(), is(396));
+		assertThat(wc.queueSize(), is(399));
 
 		res = wc.crawl(true);
 		assertThat(url2.equals(res), is(true));
-		assertThat(wc.queueSize(), is(653));
+		assertThat(wc.queueSize(), is(656));
 
 		res = wc.crawl(true);
 		assertThat(url3.equals(res), is(true));
-		assertThat(wc.queueSize(), is(704));
+		assertThat(wc.queueSize(), is(707));
 
 		Map<String, Integer> map = index.getCounts("the");
 
